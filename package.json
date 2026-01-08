@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/aya2705/Express_User_API/issues"
   },
-  "homepage": "https://github.com/aya2705/Express_User_API#readme"
+  "homepage": "https://github.com/aya2705/Express_User_API#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
 }
