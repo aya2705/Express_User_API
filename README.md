@@ -56,16 +56,17 @@ Les endpoints peuvent être testés de trois façons :
 
 ## Tester avec le navigateur (GET)
 Tous les utilisateurs :  
-http://localhost:3000/user
+`http://localhost:3000/user`
 
 Filtrer par âge :  
-http://localhost:3000/user?age=19
+`http://localhost:3000/user?age=19`
 
 Utilisateur par ID :  
-http://localhost:3000/user/1
+`http://localhost:3000/user/1`
 
 Utilisateur par username :  
-http://localhost:3000/user/name/imane
+`http://localhost:3000/user/name/imane`
+imane peut être changer par autre username
 
 ---
 
