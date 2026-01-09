@@ -2,6 +2,8 @@ const request = require('supertest');
 const app = require('./app'); 
 
 
+
+//test de l'api POST /user/add
 describe("POST /user/add",()=>{
     it('doit ajouter un utilisateur',async()=>{
         const res=await request(app).post('/user/add').send({username:"aya",age:19});
@@ -67,6 +69,8 @@ describe('GET /user',()=>{
     });  
 })
 
+
+//test de l'api GET /user/:id
 describe('GET /user/:id',()=>{
     it("should afficher l'utilisateur avec l'id demander ",async()=>{
         const res=await request(app).get('/user/1');
@@ -82,6 +86,8 @@ describe('GET /user/:id',()=>{
 
 });
 
+
+//test de l'api GET /user/name/:username
  describe('GET /user/name/:username',()=>{
     it("should afficher l'user avec le username saisi",async()=>{
         const res=await request(app).get('/user/name/aya');
@@ -97,6 +103,8 @@ describe('GET /user/:id',()=>{
     });    
 });
 
+
+//test de l'api PUT /user/:id
 describe('PUT /user/:id',()=>{
     it("doit modifier l'utilisateur avec cet id",async()=>{
       const res=await request(app).put('/user/1').send({username:"test122"});
@@ -128,6 +136,8 @@ describe('PUT /user/:id',()=>{
 });
 
 
+
+//test de l'api DELETE /user/:id
 describe('DELETE /user/:id',()=>{
     it('doit supprimer user avec l\'id saisi',async()=>{
     const res=await request(app).delete('/user/2');
