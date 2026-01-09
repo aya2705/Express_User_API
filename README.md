@@ -66,7 +66,8 @@ Utilisateur par ID :
 
 Utilisateur par username :  
 `http://localhost:3000/user/name/imane`
-imane peut être changer par autre username
+
+  imane peut être changer par autre username
 
 ---
 
