@@ -32,7 +32,7 @@ Cloner le projet depuis GitHub :
     `git clone https://github.com/aya2705/Express_User_API.git`
 
 Accéder au dossier du projet :
-    `cd express-user-api`
+    `cd express_user_api`
 
 Installer les dépendances :
     `npm install`
