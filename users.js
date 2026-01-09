@@ -2,7 +2,20 @@ const express = require("express");
 const router = express.Router();
 
 router.use(express.json());
-let Users = [];
+let Users = [
+  {
+    "id":1,
+    "username":"imane",
+    "age":19
+    
+  },
+  {
+    "id":2,
+    "username":"kamal",
+    "age":25
+    
+  },
+];
 let next = 1;
 
 //api pour ajouter les utilisateurs dans une table
@@ -58,6 +71,7 @@ router.get("/user/:id", (req, res) => {
   }
   return res.json(user);
 });
+
 
 //API pour recuperer un utilisateur par username
 router.get("/user/name/:username", (req, res) => {

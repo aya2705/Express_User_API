@@ -39,6 +39,67 @@ describe("POST /user/add",()=>{
 });
 
 
+//test de l'api GET /user
+
+describe('GET /user',()=>{
+    it("il doit retourner tous les utilisateurs ",async()=>{
+        const res=await request(app).get('/user');
+        expect(res.statusCode).toBe(200);
+        expect(Array.isArray(res.body)).toBe(true);
+
+    });
+
+    it('il doit retourner la liste des utilisateurs filtrer par age',async()=>{
+        const age=19;
+        const res=await request(app).get(`/user?age=${age}`);
+        expect(res.statusCode).toBe(200);
+        for(const u of res.body){
+            expect(u.age).toBe(age);
+        }
+    });
+
+     it("il doit retourner une table vide si aucun utilisateur avec cet age n'est present",async()=>{
+        const age=29;
+        const res=await request(app).get(`/user?age=${age}`);
+        expect(res.statusCode).toBe(200);
+        expect(Array.isArray(res.body)).toBe(true);
+        expect(res.body.length).toBe(0);
+    });  
+})
+
+describe('GET /user/:id',()=>{
+    it("should afficher l'utilisateur avec l'id demander ",async()=>{
+        const res=await request(app).get('/user/1');
+        expect(res.statusCode).toBe(200);
+        expect(res.body).toHaveProperty('id',1);
+        expect(res.body).toHaveProperty('username');
+    });
+
+    it("doit afficher username avec cet Id n'existe pas",async()=>{
+        const res=await request(app).get('/user/100');
+        expect(res.statusCode).toBe(404);
+    });
+
+});
+
+ describe('GET /user/name/:username',()=>{
+    it("should afficher l'user avec le username saisi",async()=>{
+        const res=await request(app).get('/user/name/aya');
+        expect(res.statusCode).toBe(200);
+        expect(res.body).toHaveProperty('id');
+        expect(res.body).toHaveProperty('username','aya');
+    });
+
+    it("doit afficher username n'existe pas dans la liste!!",async()=>{
+        const name="abir";
+        const res=await request(app).get(`/user/name/${name}`);
+        expect(res.statusCode).toBe(404);   
+    });    
+});
+
+
+
+
 
 
 
