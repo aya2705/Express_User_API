@@ -61,15 +61,17 @@ Tous les utilisateurs :
 Filtrer par âge :  
 `http://localhost:3000/user?age=19`
 
+`19` peut être changer par un autre âge 
+
 Utilisateur par ID :  
 `http://localhost:3000/user/1`
 
-`1` peut être changer par autre id
+`1` peut être changer par un autre id
 
 Utilisateur par username :  
 `http://localhost:3000/user/name/imane`
 
-  `imane` peut être changer par autre username
+  `imane` peut être changer par un autre username
 
 ---
 
