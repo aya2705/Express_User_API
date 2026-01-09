@@ -97,6 +97,36 @@ describe('GET /user/:id',()=>{
     });    
 });
 
+describe('PUT /user/:id',()=>{
+    it("doit modifier l'utilisateur avec cet id",async()=>{
+      const res=await request(app).put('/user/1').send({username:"test"});
+
+      expect(res.statusCode).toBe(200);
+      expect(res.body).toHaveProperty('username','test');
+      
+    });
+
+    it("doit afficher l'erreur username avec cet Id n'existe pas",async()=>{
+        const res=await request(app).put('/user/99').send({username:"test"});
+        expect(res.statusCode).toBe(404);
+    });
+    it('doit afficher que username est obligatoire',async()=>{
+        const res=await request(app).put('/user/2').send({username:""});
+        expect(res.statusCode).toBe(400);
+    });
+
+
+    it('doit afficher que username doit contenir  avoir au moins 3 caractères',async()=>{
+        const res=await request(app).put('/user/2').send({username:"ab"});
+        expect(res.statusCode).toBe(400);
+    });
+
+    it("doit afficher Ce username existe déjà la liste ",async()=>{
+        const res=await request(app).put('/user/2').send({username:"imane"});
+        expect(res.statusCode).toBe(400);
+    });
+
+})
 
 
 
