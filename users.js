@@ -16,7 +16,7 @@ let Users = [
     
   },
 ];
-let next = 1;
+let next = Users.length;
 
 //api pour ajouter les utilisateurs dans une table
 router.post("/user/add", (req, res) => {
@@ -88,18 +88,22 @@ router.get("/user/name/:username", (req, res) => {
 //API pour modifier un utilisateur en utilisant id
 router.put("/user/:id", (req, res) => {
   const user = Users.find((u) => u.id === parseInt(req.params.id));
+  
   if (!user) {
     return res.status(404).json("username avec cet Id n'existe pas !");
   }
-  if (!req.body.username) {
+
+  const updatedUsername = req.body.username?.trim();
+
+  if (!updatedUsername) {
     return res.status(400).send("username est obligatoire");
-  } else if (req.body.username.length < 3) {
+  } else if (updatedUsername.length < 3) {
     return res
       .status(400)
       .send("username doit avoir au moins 3 caractères");
   }
 
-  const updatedUsername=req.body.username.trim();
+  
   const exists = Users.find(
     (u) =>
       u.id !== user.id &&

@@ -99,15 +99,15 @@ describe('GET /user/:id',()=>{
 
 describe('PUT /user/:id',()=>{
     it("doit modifier l'utilisateur avec cet id",async()=>{
-      const res=await request(app).put('/user/1').send({username:"test"});
+      const res=await request(app).put('/user/1').send({username:"test122"});
 
       expect(res.statusCode).toBe(200);
-      expect(res.body).toHaveProperty('username','test');
+      expect(res.body).toHaveProperty('username','test122');
       
     });
 
     it("doit afficher l'erreur username avec cet Id n'existe pas",async()=>{
-        const res=await request(app).put('/user/99').send({username:"test"});
+        const res=await request(app).put('/user/99').send({username:"test122"});
         expect(res.statusCode).toBe(404);
     });
     it('doit afficher que username est obligatoire',async()=>{
@@ -115,15 +115,28 @@ describe('PUT /user/:id',()=>{
         expect(res.statusCode).toBe(400);
     });
 
-
     it('doit afficher que username doit contenir  avoir au moins 3 caractères',async()=>{
-        const res=await request(app).put('/user/2').send({username:"ab"});
+        const res=await request(app).put('/user/1').send({username:"ab"});
         expect(res.statusCode).toBe(400);
     });
 
     it("doit afficher Ce username existe déjà la liste ",async()=>{
-        const res=await request(app).put('/user/2').send({username:"imane"});
+        const res=await request(app).put('/user/2').send({username:"test122"});
         expect(res.statusCode).toBe(400);
+    });
+
+});
+
+
+describe('DELETE /user/:id',()=>{
+    it('doit supprimer user avec l\'id saisi',async()=>{
+    const res=await request(app).delete('/user/2');
+        expect(res.statusCode).toBe(200);
+    });
+
+    it('course does not exist',async()=>{
+    const res=await request(app).delete('/user/29');
+        expect(res.statusCode).toBe(404);    
     });
 
 })
