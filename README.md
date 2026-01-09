@@ -5,17 +5,6 @@ Cette application est une API REST développée avec  Express Js.
 
 ---
 
-## Fonctionnalités
-- Ajouter un utilisateur
-- Lister tous les utilisateurs
-- Filtrer les utilisateurs par âge
-- Récupérer un utilisateur par ID
-- Récupérer un utilisateur par username
-- Modifier un utilisateur
-- Supprimer un utilisateur
-- Validation des données
-- Tests automatisés
----
 
 ## Technologies utilisées
 - Express.js
@@ -23,28 +12,21 @@ Cette application est une API REST développée avec  Express Js.
 - Supertest
 ---
 
-## Structure du projet
-Express_User_API/
-├── app.js
-├── server.js
-├── users.js
-├── users.test.js
-├── package.json
-├── package-lock.json
-├── .gitignore
-└── README.md
-
----
-
 ## Prérequis
 - Node.js 
 - npm
 
 Vérification :
-node -v  
-npm -v
+    `node -v`  
+    `npm -v`
 
 ---
+## Règles de validation implémentées dans les API
+- Le username et âge sont bligatoires 
+- Le username doit contenir au moins 3 caractères
+- Le username doit commencer par une lettre
+- Le username doit être unique
+- L’âge doit être supérieur ou égal à 18
 
 ## Installation du projet
 Cloner le projet depuis GitHub :
@@ -122,33 +104,16 @@ URL : http://localhost:3000/user/1
 Les tests sont écrits avec Jest et Supertest :
     `npm test`
 
-Tous les tests doivent passer avec succès.
+*Tous les tests doivent passer avec succès.*
 
 ---
 
-## Règles de validation implémentées dans les API
-- Le username et âge sont bligatoires 
-- Le username doit contenir au moins 3 caractères
-- Le username doit commencer par une lettre
-- Le username doit être unique
-- L’âge doit être supérieur ou égal à 18
-
----
-
-## Tests automatisés
-Les tests couvrent :
-- les cas valides
-- les cas d’erreurs
-- la validation des données
-- les codes HTTP retournés
 
 
 
-## Scripts disponibles
-"scripts": {
-  "start": "node server.js",
-  "test": "jest"
-}
 
----
+
+
+
+
 
