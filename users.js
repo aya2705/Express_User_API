@@ -24,7 +24,7 @@ router.post("/user/add", (req, res) => {
     (u) => u.username.toLowerCase() === username.toLowerCase()
   );
   if (exists) {
-    return res.status(400).json({ error: "username existe déjà" });
+    return res.status(400).json("username existe déjà");
   }
 
   const user = {
