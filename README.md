@@ -64,10 +64,12 @@ Filtrer par âge :
 Utilisateur par ID :  
 `http://localhost:3000/user/1`
 
+`1` peut être changer par autre id
+
 Utilisateur par username :  
 `http://localhost:3000/user/name/imane`
 
-  imane peut être changer par autre username
+  `imane` peut être changer par autre username
 
 ---
 
