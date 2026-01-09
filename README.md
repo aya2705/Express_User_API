@@ -1,6 +1,7 @@
 # Express User API
 
-Cette application est une API REST développée avec  Express Js.  
+Cette application est une API REST développée avec  Express Js. 
+### Les données sont stockées en mémoire et sont réinitialisées à chaque redémarrage du serveur. 
 
 
 ---
@@ -22,11 +23,13 @@ Vérification :
 
 ---
 ## Règles de validation implémentées dans les API
-- Le username et âge sont bligatoires 
+- Le username et âge sont obligatoires 
 - Le username doit contenir au moins 3 caractères
 - Le username doit commencer par une lettre
 - Le username doit être unique
 - L’âge doit être supérieur ou égal à 18
+
+---
 
 ## Installation du projet
 Cloner le projet depuis GitHub :
@@ -41,7 +44,7 @@ Installer les dépendances :
 ---
 
 ## Lancer le projet en local
-   `nodemon server.js`
+   `npm start`
 
 Le serveur démarre sur :
 http://localhost:3000
@@ -104,14 +107,16 @@ URL : http://localhost:3000/user/1
 Les tests sont écrits avec Jest et Supertest :
     `npm test`
 
-*Tous les tests doivent passer avec succès.*
+Tous les tests doivent passer avec succès.
 
 ---
 
-
-
-
-
+## Tests :
+Les tests couvrent :
+- les cas valides
+- les cas d’erreurs
+- la validation des données
+- les codes HTTP retournés
 
 
 
