@@ -2,11 +2,7 @@
 
 Cette application est une API REST développée avec  Express Js. 
 ### Les données sont stockées en mémoire et sont réinitialisées à chaque redémarrage du serveur. 
-
-
 ---
-
-
 ## Technologies utilisées
 - Express.js
 - Jest
@@ -108,17 +104,11 @@ Les tests sont écrits avec Jest et Supertest :
     `npm test`
 
 Tous les tests doivent passer avec succès.
-
 ---
-
 ## Tests :
 Les tests couvrent :
 - les cas valides
 - les cas d’erreurs
 - la validation des données
 - les codes HTTP retournés
-
-
-
-
 

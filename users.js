@@ -4,40 +4,40 @@ const router = express.Router();
 router.use(express.json());
 let Users = [
   {
-    "id":1,
-    "username":"imane",
-    "age":19
-    
+    id: 1,
+    username: "imane",
+    age: 19,
   },
   {
-    "id":2,
-    "username":"kamal",
-    "age":25
-    
+    id: 2,
+    username: "kamal",
+    age: 25,
   },
 ];
-let next = Users.length;
+let next = Users.length+1;
 
 //api pour ajouter les utilisateurs dans une table
 router.post("/user/add", (req, res) => {
   const username = req.body.username?.trim();
   const { age } = req.body;
   if (username == null || age == null) {
-    return res.status(400).send("Username est âge sont obligatoires");
+    return res.status(400).json("Username et âge sont obligatoires");
+
   } else if (username.length < 3) {
-    return res
-      .status(400)
-      .send("username doit avoir une longueur minimale de 3 lettre!!");
+    return res.status(400).json("username doit avoir une longueur minimale de 3 lettres!!");
+
   } else if (age < 18) {
     return res.status(400).json("L'âge doit être supérieur à 18");
+
   } else if (!/^[a-zA-Z]/.test(username)) {
     return res.status(400).json("username doit commencer par une lettre");
+
   }
   const exists = Users.find(
     (u) => u.username.toLowerCase() === username.toLowerCase()
   );
   if (exists) {
-    return res.status(400).json("username existe déjà");
+    return res.status(400).json("Ce username existe déjà");
   }
 
   const user = {
@@ -67,11 +67,10 @@ router.get("/user", (req, res) => {
 router.get("/user/:id", (req, res) => {
   const user = Users.find((u) => u.id === parseInt(req.params.id));
   if (!user) {
-    return res.status(404).json("username avec cet Id n'existe pas !");
+    return res.status(404).json("username avec cet Id n'existe pas");
   }
   return res.json(user);
 });
-
 
 //API pour recuperer un utilisateur par username
 router.get("/user/name/:username", (req, res) => {
@@ -79,16 +78,15 @@ router.get("/user/name/:username", (req, res) => {
     (u) => u.username.toLowerCase() === req.params.username.toLowerCase()
   );
   if (!user) {
-    return res.status(404).json("username n'existe pas dans la liste!!");
+    return res.status(404).json("utilisateur avec ce username n'existe pas dans la liste!!");
   }
   return res.json(user);
 });
 
-
 //API pour modifier un utilisateur en utilisant id
 router.put("/user/:id", (req, res) => {
   const user = Users.find((u) => u.id === parseInt(req.params.id));
-  
+
   if (!user) {
     return res.status(404).json("username avec cet Id n'existe pas !");
   }
@@ -96,28 +94,24 @@ router.put("/user/:id", (req, res) => {
   const updatedUsername = req.body.username?.trim();
 
   if (!updatedUsername) {
-    return res.status(400).send("username est obligatoire");
+    return res.status(400).json("username est obligatoire");
   } else if (updatedUsername.length < 3) {
-    return res
-      .status(400)
-      .send("username doit avoir au moins 3 caractères");
+    return res.status(400).json("username doit avoir au moins 3 caractères");
   }
 
-  
   const exists = Users.find(
     (u) =>
       u.id !== user.id &&
       u.username.toLowerCase() === updatedUsername.toLowerCase()
   );
   if (exists) {
-    return res.status(400).json({ error: "Ce username existe déjà la liste " });
+    return res.status(400).json("Ce username existe déjà dans la liste " );
   }
   user.username = updatedUsername;
   Users.sort((a, b) => a.username.localeCompare(b.username));
 
   return res.json(user);
 });
-
 
 //API pour supprimer un utilisateur
 router.delete("/user/:id", (req, res) => {
