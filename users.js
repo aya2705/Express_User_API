@@ -92,14 +92,13 @@ router.put("/user/:id", (req, res) => {
       u.username.toLowerCase() === updatedUsername.toLowerCase()
   );
   if (exists) {
-    return res.status(400).json({ error: "username avec cet ID existe déjà la liste " });
+    return res.status(400).json({ error: "Ce username existe déjà la liste " });
   }
   user.username = updatedUsername;
   Users.sort((a, b) => a.username.localeCompare(b.username));
 
   return res.json(user);
 });
-
 
 
 //API pour supprimer un utilisateur
