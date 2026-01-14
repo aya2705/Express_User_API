@@ -31,7 +31,6 @@ router.post("/user/add", (req, res) => {
 
   } else if (!/^[a-zA-Z]/.test(username)) {
     return res.status(400).json("username doit commencer par une lettre");
-
   }
   const exists = Users.find(
     (u) => u.username.toLowerCase() === username.toLowerCase()
